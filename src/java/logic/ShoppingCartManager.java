@@ -8,18 +8,21 @@ import javax.faces.bean.SessionScoped;
 import model.ShoppingCartItem;
 import model.Product;
 
-
+// définir la durée de conservation de son scope: Session.
 @ManagedBean
 @SessionScoped
 public class ShoppingCartManager implements Serializable{
+    // attribut permettant de stocker le panier
     private ArrayList<ShoppingCartItem> shoppingList;
     private Product prodToAdd;
     private ShoppingCartItem itemToRmv;
 
+    // Constructeur par defaut
     public ShoppingCartManager(){
         this.shoppingList = new ArrayList<>();
     }
 
+    // Setter et getter 
     public ArrayList<ShoppingCartItem> getShoppingList(){ return shoppingList; }
     public void setShoppingList(ArrayList<ShoppingCartItem> l){ this.shoppingList=l; }
     public Product getProdToAdd(){ return prodToAdd; }
@@ -44,6 +47,7 @@ public class ShoppingCartManager implements Serializable{
         this.shoppingList.add(s2);
     }
     
+    // Ajout du produit dans le panier
     public String addToCart(){
         ShoppingCartItem s;
         s = new ShoppingCartItem( shoppingList.size() , 1, getProdToAdd());
@@ -63,6 +67,7 @@ public class ShoppingCartManager implements Serializable{
         return "toshoppingcart";
     }
 
+    // suppression de produits se trouvant déjà dans le panier
     public String rmvfromCart(){
 
         for ( ShoppingCartItem element : shoppingList ) {

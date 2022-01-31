@@ -7,7 +7,7 @@ import model.Product;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 
-
+// définir la durée de conservation de son scope: Application.
 @ManagedBean
 @ApplicationScoped
 public class CatalogManager implements Serializable{

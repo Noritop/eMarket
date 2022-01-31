@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-
+// rendre la classe sérialisable
 public class Product implements Serializable{
   // identifiant du produit
   private int id;
@@ -10,13 +10,15 @@ public class Product implements Serializable{
   private String name;
   // prix du produit
   private double price;
-  
+ 
+ // constructeur par défaut 
  public Product(int id, String name, double price){
     this.id = id;
     this.name = name;
     this.price = price;
   }
  
+ // créer des accesseurs pour chacun des attributs
  public int getId() { return id; }
  public String getName() { return name; }
  public double getPrice() { return price; }
