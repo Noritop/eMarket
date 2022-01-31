@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.SessionScoped;
 import model.ShoppingCartItem;
 import model.Product;
 
 
 @ManagedBean
-@ApplicationScoped
+@SessionScoped
 public class ShoppingCartManager implements Serializable{
     private ArrayList<ShoppingCartItem> shoppingList;
     private Product prodToAdd;
@@ -35,7 +35,7 @@ public class ShoppingCartManager implements Serializable{
         p2 = new Product(1, "Giant Elbruz", 3650);
         
         s1 = new ShoppingCartItem(0, 1, p1);
-        s2 = new ShoppingCartItem(0, 2, p2);
+        s2 = new ShoppingCartItem(1, 2, p2);
 
         this.shoppingList.add(s1);
         this.shoppingList.add(s2);
@@ -43,8 +43,20 @@ public class ShoppingCartManager implements Serializable{
     
     public String addToCart(){
         ShoppingCartItem s;
-        s = new ShoppingCartItem(0, 1, getProdToAdd());
-        this.shoppingList.add(s);
+        s = new ShoppingCartItem( shoppingList.size() , 1, getProdToAdd());
+
+        boolean test = false;
+
+        for ( ShoppingCartItem element : shoppingList ) {
+            if ( prodToAdd.equals( element.getProduit() ) ) {
+                test = true;
+                element.setQuantite( element.getQuantite() + 1 );
+                break;
+            }
+        }
+
+        if ( !test ) this.shoppingList.add(s);
+
         return "toshoppingcart";
     }
 

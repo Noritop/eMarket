@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 
 public class ShoppingCartItem implements Serializable{
+    // un identifiant de type Integer
     private int id;
+    // une quantité de type Integer
     private int quantite;
+    // un produit de type Product
     private Product produit;
   
     public ShoppingCartItem(int id, int quantite, Product produit){
