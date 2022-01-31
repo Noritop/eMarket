@@ -14,6 +14,7 @@ import model.Product;
 public class ShoppingCartManager implements Serializable{
     private ArrayList<ShoppingCartItem> shoppingList;
     private Product prodToAdd;
+    private ShoppingCartItem itemToRmv;
 
     public ShoppingCartManager(){
         this.shoppingList = new ArrayList<>();
@@ -23,7 +24,9 @@ public class ShoppingCartManager implements Serializable{
     public void setShoppingList(ArrayList<ShoppingCartItem> l){ this.shoppingList=l; }
     public Product getProdToAdd(){ return prodToAdd; }
     public void setProdToAdd(Product p){ this.prodToAdd=p; }
-    
+    public ShoppingCartItem getItemToRmv(){ return itemToRmv; }
+    public void setItemToRmv(ShoppingCartItem p){ this.itemToRmv=p; }
+
     @PostConstruct
     public void initCart(){
         ShoppingCartItem s1;
@@ -60,4 +63,15 @@ public class ShoppingCartManager implements Serializable{
         return "toshoppingcart";
     }
 
+    public String rmvfromCart(){
+
+        for ( ShoppingCartItem element : shoppingList ) {
+            if ( itemToRmv.getProduit().equals( element.getProduit() ) ) {
+                shoppingList.remove(element);
+                break;
+            }
+        }
+
+        return "toshoppingcart";
+    }
 }

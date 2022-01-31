@@ -18,6 +18,13 @@
                 <h:column>
                     <h:outputText value="#{item.quantite}" />
                 </h:column>
+                <h:column>
+                    <h:form>
+                        <h:commandButton value="Supprimer" action="#{shoppingCartManager.rmvfromCart()}">
+                            <f:setPropertyActionListener value="#{item}" target="#{shoppingCartManager.itemToRmv}" />
+                        </h:commandButton>
+                    </h:form>
+                </h:column>
             </h:dataTable>
             
             <br/>
