@@ -1,0 +1,31 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: purple;
+    font-family: Arial Black, sans-serif;
+    border-bottom: 1px solid purple;
+}
+
+p {
+    font-size: 11pt;
+    text-align: justify;
+}
+
+a {
+    font-weight: bold;
+    color: orange;
+}
+
+.orangetext {
+    font-weight: bold;
+    color: orange;
+}
+
+#onebluetext {
+    font-weight: bold;
+    color: blue;
+}
