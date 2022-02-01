@@ -9,13 +9,19 @@
     </h:head>
     <h:body>
         <f:view>
-            <h:outputText value="Catalogue" id="onebluetext"/><br/><br/>
+            <h:outputText value="Catalogue" styleClass="orangetext"/><br/><br/>
             
-            <h:dataTable value="#{catalogManager.productList}" var="item">
+            <h:dataTable value="#{catalogManager.productList}"
+                         var="item"
+                         styleClass = "table"
+                         headerClass = "tableHeader"
+                         rowClasses = "tableOddRow,tableEvenRow">
                 <h:column>
+                    <f:facet name="header">Name</f:facet>
                     <h:outputText value="#{item.name}" />
                 </h:column>
                 <h:column>
+                    <f:facet name="header">Price</f:facet>
                     <h:outputText value="#{item.price}" />
                 </h:column>
                 <h:column>
@@ -26,7 +32,7 @@
                     </h:form>
                 </h:column>
             </h:dataTable>
-            
+            <br/>
             <h:form>
                 <h:commandLink action="toindex">
                     <h:outputText value="Lien vers l'accueil"/>

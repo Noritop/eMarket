@@ -8,7 +8,7 @@ import javax.faces.bean.SessionScoped;
 import model.ShoppingCartItem;
 import model.Product;
 
-// définir la durée de conservation de son scope: Session.
+// Définir la durée de conservation de son scope: Session.
 @ManagedBean
 @SessionScoped
 public class ShoppingCartManager implements Serializable{
@@ -24,12 +24,18 @@ public class ShoppingCartManager implements Serializable{
 
     // Setter et getter 
     public ArrayList<ShoppingCartItem> getShoppingList(){ return shoppingList; }
+    
     public void setShoppingList(ArrayList<ShoppingCartItem> l){ this.shoppingList=l; }
+    
     public Product getProdToAdd(){ return prodToAdd; }
+    
     public void setProdToAdd(Product p){ this.prodToAdd=p; }
+    
     public ShoppingCartItem getItemToRmv(){ return itemToRmv; }
+    
     public void setItemToRmv(ShoppingCartItem p){ this.itemToRmv=p; }
 
+    // Méthode appelée après la création du bean pour initialiser le panier
     @PostConstruct
     public void initCart(){
         ShoppingCartItem s1;
@@ -55,7 +61,7 @@ public class ShoppingCartManager implements Serializable{
         boolean test = false;
 
         for ( ShoppingCartItem element : shoppingList ) {
-            if ( prodToAdd.equals( element.getProduit() ) ) {
+            if ( prodToAdd.equals( element ) ) {
                 test = true;
                 element.setQuantite( element.getQuantite() + 1 );
                 break;
@@ -67,16 +73,29 @@ public class ShoppingCartManager implements Serializable{
         return "toshoppingcart";
     }
 
-    // suppression de produits se trouvant déjà dans le panier
+    // suppression d'un produit se trouvant déjà dans le panier
     public String rmvfromCart(){
 
-        for ( ShoppingCartItem element : shoppingList ) {
+        for ( ShoppingCartItem element : this.shoppingList ) {
             if ( itemToRmv.getProduit().equals( element.getProduit() ) ) {
-                shoppingList.remove(element);
+                if ( element.getQuantite() > 1 ) {
+                    element.setQuantite( element.getQuantite() - 1 );
+                } else { this.shoppingList.remove(element); }
                 break;
             }
         }
 
         return "toshoppingcart";
+    }
+    
+    // Retourne le prix total des éléments du panier
+    public double getTotalPrice(){
+           
+        double sum = 0;
+        for ( ShoppingCartItem element : this.shoppingList ) {
+            sum += element.getQuantite() * element.getProduit().getPrice();
+        }
+
+        return sum;
     }
 }

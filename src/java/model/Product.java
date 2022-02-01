@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-// rendre la classe sérialisable
+// Classe sérialisable représentant un produit
 public class Product implements Serializable{
   // identifiant du produit
   private int id;
@@ -11,21 +11,26 @@ public class Product implements Serializable{
   // prix du produit
   private double price;
  
- // constructeur par défaut 
- public Product(int id, String name, double price){
-    this.id = id;
-    this.name = name;
-    this.price = price;
-  }
- 
- // créer des accesseurs pour chacun des attributs
- public int getId() { return id; }
- public String getName() { return name; }
- public double getPrice() { return price; }
- public void setId(int i) {this.id = i;}
- public void setName(String N) {this.name = N;}
- public void setPrice(double P) {this.price = P;}
- 
+    // constructeur par défaut 
+    public Product(int id, String name, double price){
+       this.id = id;
+       this.name = name;
+       this.price = price;
+     }
+
+    // créer des accesseurs pour chacun des attributs
+    public int getId() { return this.id; }
+
+    public String getName() { return this.name; }
+
+    public double getPrice() { return this.price; }
+
+    public void setId(int i) {this.id = i;}
+
+    public void setName(String N) {this.name = N;}
+
+    public void setPrice(double P) {this.price = P;}
+
     @Override
     public boolean equals( Object obj ) {
         if ( this == obj ) return true;
@@ -34,7 +39,7 @@ public class Product implements Serializable{
 
         Product other = (Product) obj;
 
-        if ( id ==  other.getId() ) return true;
+        // if ( id == other.getId() ) return true;
 
         if ( name.equals( other.getName() ) ) return true;
 

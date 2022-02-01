@@ -7,7 +7,7 @@ import model.Product;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 
-// définir la durée de conservation de son scope: Application.
+// Définir la durée de conservation de son scope: Application.
 @ManagedBean
 @ApplicationScoped
 public class CatalogManager implements Serializable{
@@ -45,9 +45,9 @@ public class CatalogManager implements Serializable{
 
     public void setPrice( double P ) { this.price = P; }
 
-    // Méthode appelée après la création du bean
+    // Méthode appelée après la création du bean pour initialiser le catalogue
     @PostConstruct
-    public void myInitMethod(){
+    public void initCatalog(){
         Product p1;
         p1 = new Product(0, "Cannondale P-32", 2599);
         Product p2;

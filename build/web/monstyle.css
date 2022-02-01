@@ -20,12 +20,37 @@ a {
     color: orange;
 }
 
-.orangetext {
-    font-weight: bold;
-    color: orange;
+.text {
+    color: black;
 }
 
-#onebluetext {
+.orangetext {
     font-weight: bold;
-    color: blue;
+    color: red;
+}
+
+.table {   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.tableHeader {
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.tableOddRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.tableEvenRow {
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+}
+
+table {
+    width: 33%;
 }
