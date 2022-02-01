@@ -61,7 +61,7 @@ public class ShoppingCartManager implements Serializable{
         boolean test = false;
 
         for ( ShoppingCartItem element : shoppingList ) {
-            if ( prodToAdd.equals( element ) ) {
+            if ( prodToAdd.equals( element.getProduit() ) ) {
                 test = true;
                 element.setQuantite( element.getQuantite() + 1 );
                 break;
